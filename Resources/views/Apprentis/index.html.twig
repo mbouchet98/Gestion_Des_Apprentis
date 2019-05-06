@@ -7,16 +7,14 @@
 		<h2>
 			<div class="row">
 				<div class="col">Liste des Apprentis</div>
-				<div class="dropdown">
-				  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					promotion :
-				  </button>
-				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-					<a class="dropdown-item" href="#">Action</a>
-					<a class="dropdown-item" href="#">Another action</a>
-					<a class="dropdown-item" href="#">Something else here</a>
-				  </div>
-				</div>
+				<select class="custom-select custom-select-sm">
+				
+				{% for unePromo in lesPromo %}
+				  
+				  <option value="{{unePromo.proPromotion}}">{{unePromo.proPromotion}}</option>
+				 
+				{% endfor %}
+				</select>
 				<div class="col text-right"><a class="btn btn-info" href="{{ path ('Apprentis_add') }}" role="button">Ajouter une Apprentis</a></div>
 			</div>
 		</h2>
@@ -31,7 +29,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				{% for uneApp in mesApp %}
+				 {% for uneApp in maProm.insApprenti %}
 					<tr>
 						<td class="text-center">
 							<a href="{{ path ('Apprentis_view',{'id':uneApp.appId})}}">
@@ -62,7 +60,7 @@
 								Pas de Apprentis pour le moment
 							</td>
 						</tr>					
-				{% endfor %}
+				{% endfor %} 
 			</tbody>
 		</table>
 {% endblock %}		

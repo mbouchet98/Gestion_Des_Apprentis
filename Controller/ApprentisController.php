@@ -4,6 +4,7 @@ namespace ApprentisBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use ApprentisBundle\Entity\Apprenti;
+use ApprentisBundle\Entity\Promotion;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -18,11 +19,18 @@ class ApprentisController extends Controller
 	public function indexAction()
     {
         $monEnregistrement = $this->getDoctrine()->getManager();
-		
+		// affiche tout les promos
+		$lesPromo = $monEnregistrement->getRepository('ApprentisBundle:Promotion')->findAll();
+		// affiche tout les apprentis
 		$mesApp = $monEnregistrement->getRepository('ApprentisBundle:Apprenti')->findBy(array(),array('appNom'=>'asc'));
-		//$mesVilles = $monEnregistrement->getRepository('ApprentisBundle:Ville')->findAll();
-
-        return $this->render('@Apprentis/Apprentis/index.html.twig', array('mesApp' =>$mesApp));
+		// recupe une promotion par rapport au select
+		//$laPromotion = $monEnregistrement->getRepository('ApprentisBundle:Promotion')->findOneBy('proPromotion'=>$unePromo);
+		// affiche les apprentis par promotion
+		$maProm = $monEnregistrement->getRepository('ApprentisBundle:Promotion')->findOneBy(array('proPromotion'=>2020));
+		//$maProm = $monEnregistrement->getRepository('ApprentisBundle:Promotion')->findByInsApprenti($laPromotion);
+		
+        
+		return $this->render('@Apprentis/Apprentis/index.html.twig', array('lesPromo'=>$lesPromo, 'mesApp' =>$mesApp, 'maProm'=>$maProm));
     }
 	
 	public function viewAction($id, Request $request)
@@ -30,7 +38,7 @@ class ApprentisController extends Controller
 		$monEnregistrement = $this->getDoctrine()->getManager();
 		
 		$monApp = $monEnregistrement->getRepository('ApprentisBundle:Apprenti')->find($id);
-		
+		//$lesPromo = $monEnregistrement->getRepository('ApprentisBundle:Promotion')->findAll();
 		//$mesVilles = $monApp->getRepository('ApprentisBundle:Ville')->findBy(array('maville' => $monApp));
 		
 		$formAppAdd=$this->get('form.factory')->createBuilder(FormType::class,$monApp);
@@ -49,6 +57,8 @@ class ApprentisController extends Controller
 				return $ville->getVilLibelle(); },'disabled' => 'true'))
 			->add('app_titre',EntityType::class, array('class' => 'ApprentisBundle:Titre','choice_label' => function ($titre) {
 				return $titre->getTitLibelle(); },'disabled' => 'true'))
+			->add('app_promotion',EntityType::class, array('class' => 'ApprentisBundle:Promotion','choice_label' => function ($lesPromo) {
+				return $Promotion->getProPromotion(); },'disabled' => 'true'))
 			->add('Modifier',SubmitType::class)
 			->add('Supprimer',SubmitType::class)
 		;
@@ -94,7 +104,10 @@ class ApprentisController extends Controller
 			
 		$form = $formApprentiAdd->getForm();
 		
-		
+		$maProm = new Promotion();
+		$formPromotion = $this->get('form.factory')->createBuilder(FormType::class,$maProm);
+		$formPromotion->add('pro_promotion',EntityType::class, array('class' => 'ApprentisBundle:Promotion','choice_label' => function ($Promotion) {return $Promotion->getProPromotion(); }));
+		$form2 = $formPromotion->getForm();
 		
 		if($request->isMethod('POST')){
 			$form->handleRequest($request);
@@ -105,12 +118,15 @@ class ApprentisController extends Controller
 				
 				$request->getSession()->getFlashBag()->add('Apprenti','enregistrement ok');
 				
-				return $this->redirectToRoute('Apprentis_index');
+				//$maProm->addInsApprenti($monApprenti);
+				//echo $maProm->getProPromotion();
+				
+				//return $this->redirectToRoute('Apprentis_index');
 			}
 			
 		}
 		
-        return $this->render('@Apprentis/Apprentis/add.html.twig', array('form'=>$form->createView()));
+        return $this->render('@Apprentis/Apprentis/add.html.twig', array('form'=>$form->createView(),'form2'=>$form2->createView()));
     }
 	
 	public function updateAction($id, Request $request)
