@@ -1,0 +1,6 @@
+Ville ok
+Titre ok
+Promotion pas ok
+Apprentis ok
+
+ promotion faire le many to many

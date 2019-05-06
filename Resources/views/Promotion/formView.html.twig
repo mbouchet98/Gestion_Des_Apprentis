@@ -1,0 +1,71 @@
+{% block body %} 
+
+	<h3>Informations</h3>
+
+	<div class="formCeinture">	
+		<div>
+			{{ form_start(formView, {'attr': {'class': 'form-horizontal'}}) }}
+			
+			<div>
+				{{ form_label(formView.pro_promotion,"Date Promotion")}}
+				{{ form_errors(formView.pro_promotion) }}
+				{{ form_widget(formView.pro_promotion, {'attr': {'class': 'form-control'}}) }}
+			</div>	
+			<hr>
+			<div>
+				<table class="table table-striped table-bordered">
+					<thead>
+						<tr>
+							<th scope="col" class="text-center col-md-2">Nom</th>
+							<th scope="col" class="text-center col-md-2">Prenom</th>
+							<th scope="col" class="text-center col-md-2">mail</th>
+							<th scope="col" class="text-center col-md-1">Modif</th>
+							<th scope="col" class="text-center col-md-1">Supp</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for unApprenti in maProm.insApprenti %}
+							<tr>
+								<td class="text-center">
+									{{ unApprenti.getAppNom() }}
+								</td>
+								<td class="text-center">
+									{{ unApprenti.appPrenom }}
+								</td>
+								<td class="text-center">
+									{{ unApprenti.appMail }}
+								</td>
+								
+								<td class="text-center">
+									<a href="{{ path ('Apprentis_update',{'id':unApprenti.appId})}}">
+										modifier
+									</a> 
+								</td>
+								<td class="text-center">
+									<a href="{{ path ('Apprentis_delete',{'id':unApprenti.appId})}}">
+										Supprimer
+									</a>
+								</td>
+							</tr>
+							{% else %}
+								<tr>
+									<td colspan="4" class="text-center">
+										Pas de Apprentis pour le moment
+									</td>
+								</tr>					
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+			<div class="row">	
+				<div class="col text-center"> {{ form_widget(formView.Modifier, {'attr': {'class': 'btn btn-info'}}) }} </div>
+				<div class="col text-center"> {{ form_widget(formView.Supprimer, {'attr': {'class': 'btn btn-info'}}) }} </div>
+				<div class="col text-center"><a class="btn btn-info" href="{{ path ('Promotion_index') }}" role="button">Annuler</a></div>
+			</div>
+			{{ form_end(formView) }}
+		</div>
+		
+	</div>
+
+
+{% endblock %}

@@ -1,0 +1,128 @@
+<?php
+
+namespace ApprentisBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Apprenti
+ *
+ * @ORM\Table(name="apprenti", indexes={@ORM\Index(name="IDX_2CB7951C9510540E", columns={"app_ville"}), @ORM\Index(name="IDX_2CB7951C4145D04D", columns={"app_lieu_naissance"}), @ORM\Index(name="IDX_2CB7951C29A4CA79", columns={"app_titre"})})
+ * @ORM\Entity
+ */
+class Apprenti
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="app_id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="apprenti_app_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $appId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="app_nom", type="string", length=30, nullable=false)
+     */
+    private $appNom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="app_prenom", type="string", length=30, nullable=false)
+     */
+    private $appPrenom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="app_rue", type="string", length=50, nullable=false)
+     */
+    private $appRue;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="app_complement", type="string", length=50, nullable=true)
+     */
+    private $appComplement;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="app_datenaissance", type="date", nullable=false)
+     */
+    private $appDatenaissance;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="app_telephone", type="string", length=10, nullable=false)
+     */
+    private $appTelephone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="app_mail", type="string", length=100, nullable=false)
+     */
+    private $appMail;
+
+    /**
+     * @var \Ville
+     *
+     * @ORM\ManyToOne(targetEntity="Ville")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="app_ville", referencedColumnName="vil_id")
+     * })
+     */
+    private $appVille;
+
+    /**
+     * @var \Ville
+     *
+     * @ORM\ManyToOne(targetEntity="Ville")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="app_lieu_naissance", referencedColumnName="vil_id")
+     * })
+     */
+    private $appLieuNaissance;
+
+    /**
+     * @var \Titre
+     *
+     * @ORM\ManyToOne(targetEntity="Titre")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="app_titre", referencedColumnName="tit_id")
+     * })
+     */
+    private $appTitre;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Promotion", inversedBy="insApprenti")
+     * @ORM\JoinTable(name="inscription",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="ins_apprenti", referencedColumnName="app_id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="ins_promotion", referencedColumnName="pro_promotion")
+     *   }
+     * )
+     */
+    private $insPromotion;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->insPromotion = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}
+

@@ -1,0 +1,56 @@
+<h3>Formulaire d'Apprentis</h3>
+
+<div class="formCeinture">
+		<div>
+			{{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+			
+			<div>
+				{{ form_label(form.app_nom,"Nom")}}
+				{{ form_errors(form.app_nom) }}
+				{{ form_widget(form.app_nom, {'attr': {'class': 'form-control'}}) }}
+			</div>	
+			<div>	
+				{{ form_label(form.app_prenom,"Prenom")}}
+				{{ form_widget(form.app_prenom, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div>	
+				{{ form_label(form.app_rue,"Rue")}}
+				{{ form_widget(form.app_rue, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div>	
+				{{ form_label(form.app_complement,"Complément")}}
+				{{ form_widget(form.app_complement, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div>	
+				{{ form_label(form.app_datenaissance,"Date de Naissance")}}
+				{{ form_widget(form.app_datenaissance, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div>	
+				{{ form_label(form.app_telephone,"Téléphone")}}
+				{{ form_widget(form.app_telephone, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div>	
+				{{ form_label(form.app_mail,"Mail")}}
+				{{ form_widget(form.app_mail, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div>	
+				{{ form_label(form.app_ville,"Ville")}}
+				{{ form_widget(form.app_ville, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div>	
+				{{ form_label(form.app_lieu_naissance 	,"Lieu Naissance")}}
+				{{ form_widget(form.app_lieu_naissance 	, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div>	
+				{{ form_label(form.app_titre 	,"Titre")}}
+				{{ form_widget(form.app_titre 	, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<hr>
+			
+			<div class="row">	
+				<div class="col text-center"> {{ form_widget(form.Enregistrer, {'attr': {'class': 'btn btn-info'}}) }} </div>
+				<div class="col text-center"><a class="btn btn-info" href="{{ path ('Ville_index') }}" role="button">Annuler</a></div>
+			</div>
+			{{ form_end(form) }}
+		</div>
+</div>

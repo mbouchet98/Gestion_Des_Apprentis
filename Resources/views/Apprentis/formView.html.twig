@@ -1,0 +1,63 @@
+{% block body %} 
+
+	<h3>Informations</h3>
+
+	<div class="formCeinture">	
+		<div>
+			{{ form_start(formView, {'attr': {'class': 'form-horizontal'}}) }}
+			
+			<div>
+				{{ form_label(formView.app_nom,"Nom")}}
+				{{ form_errors(formView.app_nom) }}
+				{{ form_widget(formView.app_nom, {'attr': {'class': 'form-control'}}) }}
+			</div>	
+			<div>	
+				{{ form_label(formView.app_prenom,"Prenom")}}
+				{{ form_widget(formView.app_prenom, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div>	
+				{{ form_label(formView.app_rue,"Rue")}}
+				{{ form_widget(formView.app_rue, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div>	
+				{{ form_label(formView.app_complement,"Complément")}}
+				{{ form_widget(formView.app_complement, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div>	
+				{{ form_label(formView.app_datenaissance,"Date de Naissance")}}
+				{{ form_widget(formView.app_datenaissance, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div>	
+				{{ form_label(formView.app_telephone,"Téléphone")}}
+				{{ form_widget(formView.app_telephone, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div>	
+				{{ form_label(formView.app_mail,"Mail")}}
+				{{ form_widget(formView.app_mail, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div>	
+				{{ form_label(formView.app_ville,"Ville")}}
+				{{ form_widget(formView.app_ville, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div>	
+				{{ form_label(formView.app_lieu_naissance 	,"Lieu Naissance")}}
+				{{ form_widget(formView.app_lieu_naissance 	, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div>	
+				{{ form_label(formView.app_titre 	,"Titre")}}
+				{{ form_widget(formView.app_titre 	, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<hr>
+			
+			<div class="row">	
+				<div class="col text-center"> {{ form_widget(formView.Modifier, {'attr': {'class': 'btn btn-info'}}) }} </div>
+				<div class="col text-center"> {{ form_widget(formView.Supprimer, {'attr': {'class': 'btn btn-info'}}) }} </div>
+				<div class="col text-center"><a class="btn btn-info" href="{{ path ('Apprentis_index') }}" role="button">Annuler</a></div>
+			</div>
+			{{ form_end(formView) }}
+		</div>
+		
+	</div>
+
+
+{% endblock %}

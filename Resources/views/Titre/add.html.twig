@@ -1,0 +1,8 @@
+{% extends "@Apprentis/layout.html.twig" %}
+
+
+{% block title %} {{ parent() }} - Gestions des Titre - Ajout {% endblock %}
+
+{% block body %} 
+		{{ include ("@Apprentis/Titre/form.html.twig") }}
+{% endblock %}	

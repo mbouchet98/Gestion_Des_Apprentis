@@ -1,0 +1,24 @@
+<h3>Formulaire de Ville</h3>
+
+<div class="formCeinture">
+		<div>
+			{{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+			
+			<div>
+				{{ form_label(form.vil_cp,"CodePostal")}}
+				{{ form_errors(form.vil_cp) }}
+				{{ form_widget(form.vil_cp, {'attr': {'class': 'form-control'}}) }}
+			</div>	
+			<div>	
+				{{ form_label(form.vil_libelle,"Nom")}}
+				{{ form_widget(form.vil_libelle, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<hr>
+			
+			<div class="row">	
+				<div class="col text-center"> {{ form_widget(form.Enregistrer, {'attr': {'class': 'btn btn-info'}}) }} </div>
+				<div class="col text-center"><a class="btn btn-info" href="{{ path ('Ville_index') }}" role="button">Annuler</a></div>
+			</div>
+			{{ form_end(form) }}
+		</div>
+</div>

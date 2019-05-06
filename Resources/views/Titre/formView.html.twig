@@ -1,0 +1,27 @@
+{% block body %} 
+
+	<h3>Informations</h3>
+
+	<div class="formCeinture">	
+		<div>
+			{{ form_start(formView, {'attr': {'class': 'form-horizontal'}}) }}
+			
+			<div>
+				{{ form_label(formView.tit_libelle,"Nom du Titre")}}
+				{{ form_errors(formView.tit_libelle) }}
+				{{ form_widget(formView.tit_libelle, {'attr': {'class': 'form-control'}}) }}
+			</div>	
+			<hr>
+			
+			<div class="row">	
+				<div class="col text-center"> {{ form_widget(formView.Modifier, {'attr': {'class': 'btn btn-info'}}) }} </div>
+				<div class="col text-center"> {{ form_widget(formView.Supprimer, {'attr': {'class': 'btn btn-info'}}) }} </div>
+				<div class="col text-center"><a class="btn btn-info" href="{{ path ('Titre_index') }}" role="button">Annuler</a></div>
+			</div>
+			{{ form_end(formView) }}
+		</div>
+		
+	</div>
+
+
+{% endblock %}

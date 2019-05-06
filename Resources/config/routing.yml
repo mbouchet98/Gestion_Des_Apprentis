@@ -1,0 +1,99 @@
+Ville_index:
+    path:     Ville/index
+    defaults:
+        _controller: ApprentisBundle:Ville:index 
+        
+Ville_add:
+    path:     Ville/add
+    defaults:
+        _controller: ApprentisBundle:Ville:add
+        
+Ville_view:
+    path:     Ville/view/{id}
+    defaults:
+        _controller: ApprentisBundle:Ville:view
+
+Ville_update:
+    path:     Ville/update/{id}
+    defaults:
+        _controller: ApprentisBundle:Ville:update
+ 
+Ville_delete:
+    path:     Ville/delete/{id}
+    defaults:
+        _controller: ApprentisBundle:Ville:delete
+        
+Titre_index:
+    path:    Titre/index
+    defaults:
+        _controller:  ApprentisBundle:Titre:index
+        
+Titre_add:
+    path:    Titre/add
+    defaults:
+        _controller:  ApprentisBundle:Titre:add
+        
+Titre_view:
+    path:    Titre/view/{id}
+    defaults:
+        _controller:  ApprentisBundle:Titre:view
+
+Titre_update:
+    path:    Titre/update/{id}
+    defaults:
+        _controller:  ApprentisBundle:Titre:update
+        
+Titre_delete:
+    path:    Titre/delete/{id}
+    defaults:
+        _controller:  ApprentisBundle:Titre:delete
+
+Promotion_index:
+    path:    Promotion/index
+    defaults:
+        _controller:  ApprentisBundle:Promotion:index
+    
+Promotion_add:
+    path:    Promotion/add
+    defaults:
+        _controller:  ApprentisBundle:Promotion:add
+        
+Promotion_view:
+    path:    Promotion/view/{id}
+    defaults:
+        _controller:  ApprentisBundle:Promotion:view
+        
+Promotion_update:
+    path:    Promotion/update/{id}
+    defaults:
+        _controller:  ApprentisBundle:Promotion:update
+        
+Promotion_delete:
+    path:    Promotion/delete/{id}
+    defaults:
+        _controller:  ApprentisBundle:Promotion:delete
+        
+Apprentis_index:
+    path:    Apprentis/index
+    defaults:
+        _controller:  ApprentisBundle:Apprentis:index
+        
+Apprentis_add:
+    path:    Apprentis/add
+    defaults:
+        _controller:  ApprentisBundle:Apprentis:add
+       
+Apprentis_view:
+    path:    Apprentis/view/{id}
+    defaults:
+        _controller:  ApprentisBundle:Apprentis:view
+        
+Apprentis_update:
+    path:    Apprentis/update/{id}
+    defaults:
+        _controller:  ApprentisBundle:Apprentis:update
+        
+Apprentis_delete:
+    path:    Apprentis/delete/{id}
+    defaults:
+        _controller:  ApprentisBundle:Apprentis:delete

@@ -1,0 +1,8 @@
+{% extends "@Apprentis/layout.html.twig" %}
+
+
+{% block title %} {{ parent() }} - Gestions des Villes - Vue {% endblock %}
+
+{% block body %} 
+		{{ include ("@Apprentis/Ville/formView.html.twig") }}
+{% endblock %}	

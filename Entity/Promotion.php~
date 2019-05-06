@@ -1,0 +1,41 @@
+<?php
+
+namespace ApprentisBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Promotion
+ *
+ * @ORM\Table(name="promotion")
+ * @ORM\Entity
+ */
+class Promotion
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="pro_promotion", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="promotion_pro_promotion_seq", allocationSize=1, initialValue=1)
+     */
+    private $proPromotion;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Apprenti", mappedBy="insPromotion")
+     */
+    private $insApprenti;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->insApprenti = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}
+

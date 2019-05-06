@@ -1,0 +1,20 @@
+<h3>Formulaire de Promotion</h3>
+
+<div class="formCeinture">
+		<div>
+			{{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+			
+			<div>
+				{{ form_label(form.pro_promotion,"Date Promotion")}}
+				{{ form_errors(form.pro_promotion) }}
+				{{ form_widget(form.pro_promotion, {'attr': {'class': 'form-control'}}) }}
+			</div>	
+			<hr>
+			
+			<div class="row">	
+				<div class="col text-center"> {{ form_widget(form.Enregistrer, {'attr': {'class': 'btn btn-info'}}) }} </div>
+				<div class="col text-center"><a class="btn btn-info" href="{{ path ('Promotion_index') }}" role="button">Annuler</a></div>
+			</div>
+			{{ form_end(form) }}
+		</div>
+</div>
